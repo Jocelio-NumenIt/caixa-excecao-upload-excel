@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: br.numen.excecaocaixa
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: https://vhnacnc1ci.sap.naturaeco.com:44300/
+        app:
+          name: ZUI5_CAIXA_EXC
+          description: Caixas de Exceção
+          package: Z_LE914_T1
+          transport: NC1K900443
+        exclude:
+          - /test/
